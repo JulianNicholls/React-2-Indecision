@@ -7,16 +7,25 @@ const app = {
 const addOption = event => {
   event.preventDefault();
 
-  console.log('submit');
-
   const newOption = event.target.elements.option.value;
-  console.log({ newOption });
 
   if (newOption) {
     app.options.push(newOption);
     event.target.elements.option.value = '';
     render();
   }
+};
+
+const removeAll = () => {
+  app.options = [];
+  render();
+};
+
+const makeDecision = () => {
+  const index = Math.floor(Math.random() * app.options.length);
+  const decision = app.options[index];
+
+  alert(decision);
 };
 
 const render = () => {
@@ -27,6 +36,12 @@ const render = () => {
       <p>
         {app.options.length > 0 ? 'Here are your options' : 'You have no options'}
       </p>
+      <button disabled={app.options.length === 0} onClick={makeDecision}>
+        What should I do?
+      </button>
+      <button disabled={app.options.length === 0} onClick={removeAll}>
+        Remove All
+      </button>
       <ol>{app.options.map(option => <li key={option}>{option}</li>)}</ol>
 
       <form onSubmit={addOption}>

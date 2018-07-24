@@ -9,16 +9,25 @@ var app = {
 var addOption = function addOption(event) {
   event.preventDefault();
 
-  console.log('submit');
-
   var newOption = event.target.elements.option.value;
-  console.log({ newOption: newOption });
 
   if (newOption) {
     app.options.push(newOption);
     event.target.elements.option.value = '';
     render();
   }
+};
+
+var removeAll = function removeAll() {
+  app.options = [];
+  render();
+};
+
+var makeDecision = function makeDecision() {
+  var index = Math.floor(Math.random() * app.options.length);
+  var decision = app.options[index];
+
+  alert(decision);
 };
 
 var render = function render() {
@@ -39,6 +48,16 @@ var render = function render() {
       'p',
       null,
       app.options.length > 0 ? 'Here are your options' : 'You have no options'
+    ),
+    React.createElement(
+      'button',
+      { disabled: app.options.length === 0, onClick: makeDecision },
+      'What should I do?'
+    ),
+    React.createElement(
+      'button',
+      { disabled: app.options.length === 0, onClick: removeAll },
+      'Remove All'
     ),
     React.createElement(
       'ol',

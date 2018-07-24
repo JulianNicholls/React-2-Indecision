@@ -3,7 +3,7 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 ## Progress
 
-Working through section 3
+Completed section 3
 
 ## Git client
 
