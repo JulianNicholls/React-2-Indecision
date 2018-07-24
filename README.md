@@ -3,7 +3,7 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 ## Progress
 
-Just started - set up Babel
+Working through section 3
 
 ## Git client
 
