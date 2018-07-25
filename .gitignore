@@ -22,4 +22,4 @@ yarn-error.log*
 
 config.js
 public/scripts/App.js
-
+public/dist/
