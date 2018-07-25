@@ -47,22 +47,35 @@ class Options extends React.Component {
 const Option = ({ text }) => <li>{text}</li>;
 
 class AddOption extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.addOption = this.addOption.bind(this);
+
+    this.state = {
+      error: ''
+    };
+  }
+
   addOption(event) {
     event.preventDefault();
 
-    const { value } = event.target.elements.option;
-    if (value.trim()) {
-      console.log(value.trim());
+    const value = event.target.elements.option.value.trim();
+    const error = this.props.addOption(value);
 
-      event.target.elements.option.value = '';
-    }
+    this.setState(() => ({ error }));
+
+    if (!error) event.target.elements.option.value = '';
   }
 
   render() {
+    const { error } = this.state;
+
     return (
       <form onSubmit={this.addOption}>
         <input type="text" name="option" />
         <button>Add Option</button>
+        {error && <p>{error}</p>}
       </form>
     );
   }
@@ -79,11 +92,16 @@ class IndecisionApp extends React.Component {
     this.state = {
       title: 'Indecision App',
       subtitle: 'Put your life in the hands of a computer',
-      options: ['Option 1', 'Second Option', 'Choice Three']
+      options: [] // ['Option 1', 'Second Option', 'Choice Three']
     };
   }
 
-  addOption(text) {}
+  addOption(text) {
+    if (!text) return 'You must enter some text';
+    else if (this.state.options.indexOf(text) !== -1) return 'That is a duplicate';
+
+    this.setState(prevState => ({ options: [...prevState.options, text] }));
+  }
 
   removeAll() {
     this.setState(() => ({ options: [] }));
@@ -105,7 +123,7 @@ class IndecisionApp extends React.Component {
         <Header title={title} subtitle={subtitle} />
         <Action hasOptions={options.length > 0} makeDecision={this.decide} />
         <Options options={options} removeAll={this.removeAll} />
-        <AddOption />
+        <AddOption addOption={this.addOption} />
       </div>
     );
   }
