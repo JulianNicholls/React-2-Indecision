@@ -3,7 +3,7 @@ const Header = ({ title = 'Indecision App', subtitle }) => (
     style={{
       background: '#335',
       color: '#fff',
-      marginBottom: '8px',
+      marginBottom: '10px',
       padding: '10px 0 5px 10rem'
     }}
   >
