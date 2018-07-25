@@ -1,17 +1,11 @@
 import React from 'react';
 
 class AddOption extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    error: ''
+  };
 
-    this.addOption = this.addOption.bind(this);
-
-    this.state = {
-      error: ''
-    };
-  }
-
-  addOption(event) {
+  addOption = event => {
     event.preventDefault();
 
     const value = event.target.elements.option.value.trim();
@@ -20,7 +14,7 @@ class AddOption extends React.Component {
     this.setState(() => ({ error }));
 
     if (!error) event.target.elements.option.value = '';
-  }
+  };
 
   render() {
     const { error } = this.state;

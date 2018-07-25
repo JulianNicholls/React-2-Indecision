@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "live-server public",
-    "build": "webpack --watch",
-    "build-babel": "babel src/App.js --out-file=public/scripts/App.js --presets=env,react --watch"
+    "build:prod": "webpack -p --env production",
+    "dev-server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,12 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "webpack": "^3.1.0"
+    "webpack": "^4.16.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
@@ -34,6 +35,8 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "live-server": "^1.2.0"
+    "live-server": "^1.2.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }

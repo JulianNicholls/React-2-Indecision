@@ -3,12 +3,14 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 ## Progress
 
-Completed section 5 - Stateless Functional Components
+Completed section 6 - Webpack
 
 ## Differences from Andrew
 
 I have skipped retyping some of the playground tutorials and exercises, 
 e.g. Arrow functions, Classes.
+
+My directory layout is slightly different, and I use my own names for event functions.
 
 ## Git client
 
