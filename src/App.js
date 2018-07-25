@@ -1,14 +1,14 @@
-const Header = ({ title, subtitle }) => (
+const Header = ({ title = 'Indecision App', subtitle }) => (
   <header
     style={{
       background: '#335',
       color: '#fff',
-      marginBottom: '10px',
+      marginBottom: '8px',
       padding: '10px 0 5px 10rem'
     }}
   >
     <h1>{title}</h1>
-    {subtitle && <h3>{subtitle}</h3>}
+    {subtitle && <h2>{subtitle}</h2>}
   </header>
 );
 
@@ -18,18 +18,25 @@ const Action = ({ hasOptions, makeDecision }) => (
   </button>
 );
 
-const Options = ({ options, removeAll }) => {
+const Options = ({ options, removeAll, removeOption }) => {
   if (options.length === 0) return null;
 
   return (
     <div>
       <button onClick={removeAll}>Remove All</button>
-      <ol>{options.map(option => <Option key={option} text={option} />)}</ol>
+      {options.map(option => (
+        <Option key={option} text={option} removeOption={removeOption} />
+      ))}
     </div>
   );
 };
 
-const Option = ({ text }) => <li>{text}</li>;
+const Option = ({ text, removeOption }) => (
+  <div className="option">
+    {text}
+    <button onClick={() => removeOption(text)}>Remove</button>
+  </div>
+);
 
 class AddOption extends React.Component {
   constructor(props) {
@@ -71,13 +78,14 @@ class IndecisionApp extends React.Component {
     super(props);
 
     this.addOption = this.addOption.bind(this);
+    this.removeOption = this.removeOption.bind(this);
     this.removeAll = this.removeAll.bind(this);
     this.decide = this.decide.bind(this);
 
     this.state = {
       title: 'Indecision App',
       subtitle: 'Put your life in the hands of a computer',
-      options: [] // ['Option 1', 'Second Option', 'Choice Three']
+      options: props.options // ['Option 1', 'Second Option', 'Choice Three']
     };
   }
 
@@ -86,6 +94,12 @@ class IndecisionApp extends React.Component {
     else if (this.state.options.indexOf(text) !== -1) return 'That is a duplicate';
 
     this.setState(prevState => ({ options: [...prevState.options, text] }));
+  }
+
+  removeOption(text) {
+    this.setState(prevState => ({
+      options: prevState.options.filter(option => option !== text)
+    }));
   }
 
   removeAll() {
@@ -107,11 +121,20 @@ class IndecisionApp extends React.Component {
       <div>
         <Header title={title} subtitle={subtitle} />
         <Action hasOptions={options.length > 0} makeDecision={this.decide} />
-        <Options options={options} removeAll={this.removeAll} />
+        <Options
+          options={options}
+          removeAll={this.removeAll}
+          removeOption={this.removeOption}
+        />
         <AddOption addOption={this.addOption} />
       </div>
     );
   }
 }
+
+// The other way of setting defaults
+IndecisionApp.defaultProps = {
+  options: []
+};
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('root'));
