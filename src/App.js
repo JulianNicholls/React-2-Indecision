@@ -1,48 +1,33 @@
-class Header extends React.Component {
-  render() {
-    const { title, subtitle } = this.props;
-    return (
-      <header
-        style={{
-          background: '#333',
-          color: '#fff',
-          marginBottom: '10px',
-          padding: '10px 0 5px 10rem'
-        }}
-      >
-        <h1>{title}</h1>
-        {subtitle && <h3>{subtitle}</h3>}
-      </header>
-    );
-  }
-}
+const Header = ({ title, subtitle }) => (
+  <header
+    style={{
+      background: '#335',
+      color: '#fff',
+      marginBottom: '10px',
+      padding: '10px 0 5px 10rem'
+    }}
+  >
+    <h1>{title}</h1>
+    {subtitle && <h3>{subtitle}</h3>}
+  </header>
+);
 
-class Action extends React.Component {
-  render() {
-    const { hasOptions, makeDecision } = this.props;
+const Action = ({ hasOptions, makeDecision }) => (
+  <button disabled={!hasOptions} onClick={makeDecision}>
+    What should I do?
+  </button>
+);
 
-    return (
-      <button disabled={!hasOptions} onClick={makeDecision}>
-        What should I do?
-      </button>
-    );
-  }
-}
+const Options = ({ options, removeAll }) => {
+  if (options.length === 0) return null;
 
-class Options extends React.Component {
-  render() {
-    const { options, removeAll } = this.props;
-
-    if (options.length === 0) return null;
-
-    return (
-      <div>
-        <button onClick={removeAll}>Remove All</button>
-        <ol>{options.map(option => <Option key={option} text={option} />)}</ol>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <button onClick={removeAll}>Remove All</button>
+      <ol>{options.map(option => <Option key={option} text={option} />)}</ol>
+    </div>
+  );
+};
 
 const Option = ({ text }) => <li>{text}</li>;
 
@@ -75,7 +60,7 @@ class AddOption extends React.Component {
       <form onSubmit={this.addOption}>
         <input type="text" name="option" />
         <button>Add Option</button>
-        {error && <p>{error}</p>}
+        {error && <p style={{ color: '#a00' }}>{error}</p>}
       </form>
     );
   }
