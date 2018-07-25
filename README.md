@@ -3,7 +3,7 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 ## Progress
 
-Completed section 6 - Webpack
+Completed section 7 - Using a Third-Party Component (react-modal)
 
 ## Differences from Andrew
 

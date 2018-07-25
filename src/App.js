@@ -4,12 +4,14 @@ import Header from './components/Header';
 import Action from './components/Action';
 import Options from './components/Options';
 import AddOption from './components/AddOption';
+import OptionModal from './components/OptionModal';
 
 class IndecisionApp extends React.Component {
   state = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: this.props.options
+    options: this.props.options,
+    selected: undefined
   };
 
   componentDidMount() {
@@ -49,7 +51,11 @@ class IndecisionApp extends React.Component {
     const index = Math.floor(Math.random() * options.length);
     const decision = options[index];
 
-    alert(decision);
+    this.setState(() => ({ selected: decision }));
+  };
+
+  closeModal = () => {
+    this.setState(() => ({ selected: undefined }));
   };
 
   render() {
@@ -65,6 +71,8 @@ class IndecisionApp extends React.Component {
           removeOption={this.removeOption}
         />
         <AddOption addOption={this.addOption} />
+
+        <OptionModal selected={this.state.selected} closeModal={this.closeModal} />
       </div>
     );
   }
