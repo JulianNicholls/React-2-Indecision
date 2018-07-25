@@ -1,57 +1,55 @@
-const app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
-};
-
-const addOption = event => {
-  event.preventDefault();
-
-  const newOption = event.target.elements.option.value;
-
-  if (newOption) {
-    app.options.push(newOption);
-    event.target.elements.option.value = '';
-    render();
+class Header extends React.Component {
+  render() {
+    return (
+      <header
+        style={{
+          background: '#333',
+          color: '#fff',
+          marginBottom: '10px',
+          padding: '10px 0 5px 10rem'
+        }}
+      >
+        <h1>Indecision</h1>
+        <h3>Put your life in the hands of a computer</h3>
+      </header>
+    );
   }
-};
+}
 
-const removeAll = () => {
-  app.options = [];
-  render();
-};
+class Action extends React.Component {
+  render() {
+    return <button>What should I do?</button>;
+  }
+}
 
-const makeDecision = () => {
-  const index = Math.floor(Math.random() * app.options.length);
-  const decision = app.options[index];
+class Options extends React.Component {
+  render() {
+    return (
+      <ol>
+        <li>Static Option One</li>
+        <li>Static Option Two</li>
+      </ol>
+    );
+  }
+}
 
-  alert(decision);
-};
-
-const render = () => {
-  const template = (
-    <div>
-      <h1>{app.title}</h1>
-      {app.subtitle && <h2>{app.subtitle}</h2>}
-      <p>
-        {app.options.length > 0 ? 'Here are your options' : 'You have no options'}
-      </p>
-      <button disabled={app.options.length === 0} onClick={makeDecision}>
-        What should I do?
-      </button>
-      <button disabled={app.options.length === 0} onClick={removeAll}>
-        Remove All
-      </button>
-      <ol>{app.options.map(option => <li key={option}>{option}</li>)}</ol>
-
-      <form onSubmit={addOption}>
-        <input type="text" name="option" />
-        <button>Add it</button>
+class AddOption extends React.Component {
+  render() {
+    return (
+      <form>
+        <input type="text" />
       </form>
-    </div>
-  );
+    );
+  }
+}
 
-  ReactDOM.render(template, document.getElementById('root'));
-};
+const App = () => (
+  <div>
+    <Header />
+    <Action />
+    <Options />
+    <AddOption />
+  </div>
+);
 
-render();
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -5,6 +5,11 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 Completed section 3
 
+## Differences from Andrew
+
+I have skipped retyping some of the playground tutorials and exercises, 
+e.g. Arrow functions, Classes.
+
 ## Git client
 
 I have used Git at the command-line for 10 years.
