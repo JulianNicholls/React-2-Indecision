@@ -3,7 +3,7 @@ Indecision App from The Complete React Web Developer Course (2nd Edition) by And
 
 ## Progress
 
-Completed section 4 - React Components
+Completed section 5 - Stateless Functional Components
 
 ## Differences from Andrew
 

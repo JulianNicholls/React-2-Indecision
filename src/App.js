@@ -19,7 +19,7 @@ const Action = ({ hasOptions, makeDecision }) => (
 );
 
 const Options = ({ options, removeAll, removeOption }) => {
-  if (options.length === 0) return null;
+  if (options.length === 0) return <p>You have no options</p>;
 
   return (
     <div>
@@ -87,6 +87,21 @@ class IndecisionApp extends React.Component {
       subtitle: 'Put your life in the hands of a computer',
       options: props.options // ['Option 1', 'Second Option', 'Choice Three']
     };
+  }
+
+  componentDidMount() {
+    const saved_options = localStorage.getItem('indecision_options');
+
+    try {
+      const options = JSON.parse(saved_options);
+
+      if (options) this.setState(() => ({ options }));
+    } catch (e) {}
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length)
+      localStorage.setItem('indecision_options', JSON.stringify(this.state.options));
   }
 
   addOption(text) {
