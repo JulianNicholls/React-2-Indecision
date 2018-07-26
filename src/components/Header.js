@@ -1,16 +1,9 @@
 import React from 'react';
 
 const Header = ({ title, subtitle }) => (
-  <header
-    style={{
-      background: '#335',
-      color: '#fff',
-      marginBottom: '10px',
-      padding: '10px 0 5px 10rem'
-    }}
-  >
-    <h1>{title}</h1>
-    {subtitle && <h2>{subtitle}</h2>}
+  <header>
+    <h1 className="header__title">{title}</h1>
+    {subtitle && <h2 className="header__subtitle">{subtitle}</h2>}
   </header>
 );
 
