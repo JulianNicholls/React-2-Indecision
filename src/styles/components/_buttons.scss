@@ -15,10 +15,10 @@ button {
   color: white;
   font-size: $l-size;
   font-weight: bold;
-  margin-bottom: $xl-size;
-  padding: 2.4rem;
+  margin-bottom: $m-size;
+  padding: $m-size;
   width: 100%;
-
+  
   &:disabled {
     opacity: 0.5;
   }
@@ -38,4 +38,11 @@ button {
   border: none;
   color: $off-white;
   padding: 0;
+}
+
+@media (min-width: $deskop-breakpoint) {
+  .big-button {
+    margin-bottom: $xl-size;
+    padding: 2.4rem;
+  }
 }
