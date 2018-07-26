@@ -8,8 +8,6 @@ import OptionModal from './components/OptionModal';
 
 class IndecisionApp extends React.Component {
   state = {
-    title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer',
     options: this.props.options,
     selected: undefined
   };
@@ -59,11 +57,14 @@ class IndecisionApp extends React.Component {
   };
 
   render() {
-    const { title, subtitle, options } = this.state;
+    const { options } = this.state;
 
     return (
       <div>
-        <Header title={title} subtitle={subtitle} />
+        <Header
+          title="Indecision App"
+          subtitle="Put your life in the hands of a computer"
+        />
         <Action hasOptions={options.length > 0} makeDecision={this.decide} />
         <Options
           options={options}
