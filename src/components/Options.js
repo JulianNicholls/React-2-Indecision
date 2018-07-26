@@ -5,7 +5,9 @@ const Options = ({ options, removeAll, removeOption }) => {
 
   return (
     <div>
-      <button onClick={removeAll}>Remove All</button>
+      <button className="button button--link" onClick={removeAll}>
+        Remove All
+      </button>
       {options.map(option => (
         <Option key={option} text={option} removeOption={removeOption} />
       ))}
@@ -16,7 +18,9 @@ const Options = ({ options, removeAll, removeOption }) => {
 const Option = ({ text, removeOption }) => (
   <div className="option">
     {text}
-    <button onClick={() => removeOption(text)}>Remove</button>
+    <button className="button button--link" onClick={() => removeOption(text)}>
+      Remove
+    </button>
   </div>
 );
 

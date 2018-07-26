@@ -22,7 +22,7 @@ class AddOption extends React.Component {
     return (
       <form onSubmit={this.addOption}>
         <input type="text" name="option" />
-        <button>Add Option</button>
+        <button className="button">Add Option</button>
         {error && <p style={{ color: '#a00' }}>{error}</p>}
       </form>
     );

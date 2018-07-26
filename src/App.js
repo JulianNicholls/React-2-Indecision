@@ -65,13 +65,16 @@ class IndecisionApp extends React.Component {
           title="Indecision App"
           subtitle="Put your life in the hands of a computer"
         />
-        <Action hasOptions={options.length > 0} makeDecision={this.decide} />
-        <Options
-          options={options}
-          removeAll={this.removeAll}
-          removeOption={this.removeOption}
-        />
-        <AddOption addOption={this.addOption} />
+
+        <div className="container">
+          <Action hasOptions={options.length > 0} makeDecision={this.decide} />
+          <Options
+            options={options}
+            removeAll={this.removeAll}
+            removeOption={this.removeOption}
+          />
+          <AddOption addOption={this.addOption} />
+        </div>
 
         <OptionModal selected={this.state.selected} closeModal={this.closeModal} />
       </div>
