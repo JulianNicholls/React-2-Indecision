@@ -8,10 +8,14 @@ const OptionModal = ({ selected, closeModal }) => (
     isOpen={!!selected}
     contentLabel="Selected Option"
     onRequestClose={closeModal}
+    closeTimeoutMS={300}
+    className="modal"
   >
-    <h3>Selected Option</h3>
-    <p>{selected}</p>
-    <button onClick={closeModal}>OK</button>
+    <h3 className="modal__title">Selected Option</h3>
+    <p className="modal__body">{selected}</p>
+    <button className="button" onClick={closeModal}>
+      OK
+    </button>
   </Modal>
 );
 
