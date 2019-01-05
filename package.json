@@ -6,16 +6,17 @@
   "scripts": {
     "serve": "live-server public",
     "build:prod": "webpack -p --env production",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "deploy": "gh-pages -d public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JulianNicholls/..."
+    "url": "git+https://github.com/JulianNicholls/React-2-Indecision"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/JulianNicholls/...",
+  "homepage": "https://juliannicholls.github.io/indecision",
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -24,6 +25,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "gh-pages": "^1.2.0",
+
     "node-sass": "^4.9.2",
     "normalize.css": "^8.0.0",
     "react": "^16.4.1",
