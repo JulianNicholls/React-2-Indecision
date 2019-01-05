@@ -1,5 +1,5 @@
 # React-2-Indecision
-Indecision App from The Complete React Web Developer Course (2nd Edition) by Andrew Mead at https://www.udemy.com/react-2nd-edition/learn/v4/content
+Indecision App from the first half of [The Complete React Web Developer Course (2nd Edition) by Andrew Mead](https://www.udemy.com/react-2nd-edition/learn/v4/content)
 
 ## Progress
 
